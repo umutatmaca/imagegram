@@ -21,19 +21,20 @@ Backend service for a system that allows you to create account, upload images an
 ## How to run application
 
 ##### Using Azure Cloud:
-1. Publish Web.API to Azure App Service.
-2. Set connection string in appsettings.json/or in AppSercice configuration to use a persistent storage.
+1. Set connection string in appsettings.json/or in AppSercice configuration to use a persistent storage. Then run "dotnet ef database update"
    Or leave it empty to use in-memory database.(Data will be released when host is down.)
-3. Set blob storage connection string to use Azure blob storage to store images.
-4. Use swagger or Postman to call the Web.API endpoints.
-5. Publish ImageConverter function app to Azure, to enable asynchronious image convert operation (JPG).
+2. Set blob storage connection string to use Azure blob storage for images.
+   Or leave it empty to use local server storage.
+3. Publish Web.API to Azure App Service.
+4. Publish ImageConverter function app to Azure, to enable asynchronious image convert operation (JPG).
+5. Browse the app swagger link or use Postman to call the Web.API endpoints.
 
 ##### Using Local Environment:
-1. Pusblish Web.API to local IIS or run in Visual Studio in local environment
-2. Set connection string in appsettings.json to use a persistent storage.
+1. Set connection string in appsettings.json to use a persistent storage. Then run "dotnet ef database update"
    Or leave it empty to use in-memory database.(Data will be released when host is down.)
-3. Set blob storage connection string to use Azure blob storage for images.
+2. Set blob storage connection string to use Azure blob storage for images.
    Or leave it empty to use local server storage.
-4. Run Web.API in Visual Studio and swagger link will be opened by default. Use swagger or Postman to call the endpoints.
-5. If you choose Azure Blob Storage, then run ImageConverter function locally or on Azure to enable asynchronious image convert operation.
+3. Pusblish Web.API to local IIS or run in Visual Studio in local environment
+4. Browse the app swagger link or use Postman to call the endpoints.
+5. If you choose Azure Blob Storage, then run ImageConverter function locally or publish to Azure to enable asynchronious image convert operation.
    If no Azure Storage Connection is specified, then images will be uploaded to web root and will be automatically converted to jpg format.

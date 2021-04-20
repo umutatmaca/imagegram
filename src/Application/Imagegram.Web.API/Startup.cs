@@ -68,7 +68,10 @@ namespace Imagegram.Web.API
             {
                 if (!string.IsNullOrWhiteSpace(dbConnectionString))
                 {
-                    options.UseSqlServer(Configuration.GetConnectionString(dbConnectionString));
+                    options.UseSqlServer(dbConnectionString, dbOptions =>
+                    {
+                        dbOptions.MigrationsAssembly("Imagegram.Infrastructure");
+                    });
                 }
                 else
                 {
