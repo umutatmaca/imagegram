@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Imagegram.Web.API</name>
+    </assembly>
+    <members>
+        <member name="T:Imagegram.Web.API.Controllers.AccountsController">
+            <summary>
+            account management endpoints
+            </summary>
+        </member>
+        <member name="M:Imagegram.Web.API.Controllers.AccountsController.CreateAccount(System.String)">
+            <summary>
+            create account
+            </summary>
+            <returns>newly created account</returns>
+            <response code="201">newly created account</response>
+            <response code="400">if name is empty</response>
+            <response code="500">if unhandled exception occurs</response>
+        </member>
+        <member name="M:Imagegram.Web.API.Controllers.AccountsController.GetAccountById(System.Guid)">
+            <summary>
+            Get account by id.
+            </summary>
+            <returns>specific account</returns>
+            <response code="200">account</response>
+            <response code="400">if account id is empty</response>
+            <response code="401">if account header is not present or invalid</response>
+            <response code="404">if account is not found</response>
+            <response code="500">if unhandled exception occurs</response>
+        </member>
+        <member name="M:Imagegram.Web.API.Controllers.AccountsController.DeleteAccount(System.Guid)">
+            <summary>
+            Delete account.
+            </summary>
+            <returns>specific account</returns>
+            <response code="200">deleted account</response>
+            <response code="204">if account is already deleted</response>
+            <response code="401">if account header is not present or invalid</response>
+            <response code="500">if unhandled exception occurs</response>
+        </member>
+        <member name="T:Imagegram.Web.API.Controllers.CommentsController">
+            <summary>
+            post comments management endpoints
+            </summary>
+        </member>
+        <member name="M:Imagegram.Web.API.Controllers.CommentsController.CreateComment(System.Guid,System.Guid,System.String)">
+            <summary>
+            create comments on posts with given creator account
+            </summary>
+            <returns>newly created comment account</returns>
+            <response code="201">newly created comment</response>
+            <response code="400">if creatorId, postId or content is empty</response>
+            <response code="401">if account header is not present or invalid</response>
+            <response code="404">if creator account or post is not found</response>
+            <response code="500">if unhandled exception occurs</response>
+        </member>
+        <member name="M:Imagegram.Web.API.Controllers.CommentsController.GetCommentById(System.Guid,System.Guid)">
+            <summary>
+            get comment with given comment id for given post id.
+            </summary>
+            <returns>specific comment belonging to a post</returns>
+            <response code="200">newly created comment</response>
+            <response code="400">if postId or commentId is empty</response>
+            <response code="401">if account header is not present or invalid</response>
+            <response code="404">if comment is not found</response>
+            <response code="500">if unhandled exception occurs</response>
+        </member>
+        <member name="M:Imagegram.Web.API.Controllers.CommentsController.GetPostComments(System.Guid,System.Int32,System.Int32)">
+            <summary>
+            get comments on a post with given postId
+            </summary>
+            <returns>comments under a post</returns>
+            <response code="200">comments uncer a post</response>
+            <response code="400">if postId is empty, pageNumber or pageSize is less than or equal to zero</response>
+            <response code="401">if account header is not present or invalid</response>
+            <response code="500">if unhandled exception occurs</response>
+        </member>
+        <member name="T:Imagegram.Web.API.Controllers.PostsController">
+            <summary>
+            posts management endpoints
+            </summary>
+        </member>
+        <member name="M:Imagegram.Web.API.Controllers.PostsController.CreatePost(System.Guid,Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            create posts for given account
+            </summary>
+            <returns></returns>
+            <returns>newly created post</returns>
+            <response code="201">newly created post</response>
+            <response code="400">if creatorId or image empty or image type is not valid</response>
+            <response code="401">if account header is not present or invalid</response>
+            <response code="404">if creator account is not found</response>
+            <response code="500">if unhandled exception occurs</response>
+        </member>
+        <member name="M:Imagegram.Web.API.Controllers.PostsController.GetPostById(System.Guid)">
+            <summary>
+            Gets the post by id.
+            </summary>
+            <returns>specific post</returns>
+            <response code="200">specific post</response>
+            <response code="400">if post id is empty</response>
+            <response code="401">if account header is not present or invalid</response>
+            <response code="404">if post is not found</response>
+            <response code="500">if unhandled exception occurs</response>
+        </member>
+        <member name="M:Imagegram.Web.API.Controllers.PostsController.GetPosts(System.Int32,System.Int32)">
+            <summary>
+            get all posts with last 3 comments
+            </summary>
+            <returns>all posts with last 3 comments</returns>
+            <response code="200">all posts</response>
+            <response code="400">if pageNumber or pageSize is less than or equal to zero</response>
+            <response code="401">if account header is not present or invalid</response>
+            <response code="500">if unhandled exception occurs</response>
+        </member>
+        <member name="M:Imagegram.Web.API.Services.SelfHostedFileUploader.UploadAsync(System.String,System.String,System.String,System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            upload given stream to self hosted web root
+            </summary>
+            <param name="folderName">folder name to place image</param>
+            <param name="fileName">file name with extension</param>
+            <param name="contentType">content type / related to extension</param>
+            <param name="fileStream">source stream</param>
+            <param name="cancellationToken">cancellation token</param>
+            <returns>local file path</returns>
+        </member>
+    </members>
+</doc>
